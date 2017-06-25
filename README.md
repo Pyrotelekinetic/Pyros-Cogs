@@ -1,2 +1,2 @@
-# autoquote
-repo for autoquote cog for Appu's selfbot
+# Autoquote
+Official repo for Pyrotelekinetic's Autoquote cog for Appu's Selfbot.
