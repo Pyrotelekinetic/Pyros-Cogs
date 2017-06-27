@@ -2,7 +2,7 @@ import discord
 from cogs.utils.checks import *
 
 '''Type "^" to quote the last message sent in a channel.
-Brought to you by: Pyrotelekinetic'''
+Brought to you by Pyrotelekinetic'''
 
 config = load_config()
 command_prefix = config['self.bot.bot_prefix']
