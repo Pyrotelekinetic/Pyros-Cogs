@@ -1,5 +1,6 @@
 import discord
 from cogs.utils.checks import *
+from appuselfbot import bot_prefix
 
 '''Type "^" to quote the last message sent in a channel.
 Brought to you by Pyrotelekinetic'''
