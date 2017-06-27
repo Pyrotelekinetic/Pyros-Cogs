@@ -5,7 +5,7 @@ from cogs.utils.checks import *
 Brought to you by Pyrotelekinetic'''
 
 config = load_config()
-command_prefix = config['self.bot.bot_prefix']
+command_prefix = config['bot_prefix']
 
 class autoquote:
 
@@ -18,7 +18,7 @@ class autoquote:
 			channel = message.channel
 			search = self.bot.all_log[message.channel.id + ' ' + message.server.id][-2]
 			result = search[0]
-			await self.bot.send_message(message.channel, "{}quote {}".format(self.bot.bot_prefix, result.id))
+			await self.bot.send_message(message.channel, "{}quote {}".format(bot_prefix, result.id))
 	
 def setup(bot):
     bot.add_cog(autoquote(bot))
