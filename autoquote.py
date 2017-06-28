@@ -4,13 +4,13 @@ from cogs.utils.checks import *
 class autoquote:
 
 	def __init__(self, bot):
-		self.bot = bot
-        config = load_config()
-        self.cmd_prefix = config["cmd_prefix"]
+			self.bot = bot
+			config = load_config()
+			self.cmd_prefix = config["cmd_prefix"]
 	
 	async def on_message(self, message):
 		if message.content == "^" and message.author == self.bot.user:
-	        await self.bot.delete_message(message)
+			await self.bot.delete_message(message)
 			channel = message.channel
 			search = self.bot.all_log[message.channel.id + ' ' + message.server.id][-2]
 			result = search[0]
