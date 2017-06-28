@@ -6,10 +6,6 @@ class autoquote:
 
 	def __init__(self, bot):
 		self.bot = bot
-		
-	@commands.command(pass_context=True)
-    async def noquote(self, ctx, *, msg: str = None):
-	'''Type "^" to quote the last message sent in a channel. Warning, this is stupidly jumpy.'''
 	
 	async def on_message(self, message):
 		if message.content == "^" and message.author == self.bot.user:
