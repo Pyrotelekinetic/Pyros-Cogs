@@ -1,6 +1,6 @@
 import discord
 from cogs.utils.checks import *
-from appuselfbot import command_prefix
+from appuselfbot import cmd_prefix
 
 class autoquote:
 
@@ -13,7 +13,7 @@ class autoquote:
 			channel = message.channel
 			search = self.bot.all_log[message.channel.id + ' ' + message.server.id][-2]
 			result = search[0]
-			await self.bot.send_message(message.channel, "{}quote {}".format(command_prefix, result.id))
+			await self.bot.send_message(message.channel, "{}quote {}".format(cmd_prefix, result.id))
 	
 def setup(bot):
     bot.add_cog(autoquote(bot))
