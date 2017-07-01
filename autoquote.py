@@ -14,7 +14,7 @@ class autoquote:
 			channel = message.channel
 			search = self.bot.all_log[message.channel.id + ' ' + message.server.id][-2]
 			result = search[0]
-			await self.bot.send_message(message.channel, "{}quote {}".format(self.cmd_prefix, result.id))
+			await self.bot.send_message(message.channel, "{}quote {}".format(self.cmd_prefix[0], result.id))
 	
 def setup(bot):
     bot.add_cog(autoquote(bot))
