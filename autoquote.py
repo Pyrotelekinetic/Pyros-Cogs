@@ -52,7 +52,8 @@ class autoquote:
 				result += char.upper()
 			if value == False:
 				result += char.lower()
-		await self.bot.edit_message(ctx.message, result)
+		await self.bot.delete_message(ctx.message)
+		await self.bot.send_message(ctx.message.channel, result)
 		
 def setup(bot):
     bot.add_cog(autoquote(bot))
