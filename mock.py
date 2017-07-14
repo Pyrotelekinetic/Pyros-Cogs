@@ -20,7 +20,6 @@ class mock:
 		>mock (message id)
 			THaT mEsSAgE
 		"""
-		result = ""
 		if msg:
 			if msg.isdigit():
 				async for message in self.bot.logs_from(ctx.message.channel, 100):
@@ -34,14 +33,38 @@ class mock:
 					msg = message.content
 				else:
 					switch = True
+					
+		fakeresult = ""
 		for char in msg:
 			value = random.choice([True, False])
 			if value == True:
-				result += char.upper()
+				fakeresult += char.upper()
 			if value == False:
+				fakeresult += char.lower()
+				
+		caps = ""
+		for char in fakeresult:
+			if char.isupper():
+				caps += "X"
+			else:
+				caps += "x"
+				
+		while "xxx" in caps or "XXX" in caps:
+			caps = caps.replace("XXX", "XxX").replace("xxx", "xXx")
+			
+		result = ""
+		for idx, char in enumerate(fakeresult):
+			if caps[idx] == "x":
 				result += char.lower()
+			else:
+				result += char.upper()
 		await self.bot.delete_message(ctx.message)
 		await self.bot.send_message(ctx.message.channel, result)
 		
 def setup(bot):
 	bot.add_cog(mock(bot))
+
+
+
+	
+# Thanks for the help Lyric.
