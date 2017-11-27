@@ -1,33 +1,32 @@
-import discord
 from discord.ext import commands
-from cogs.utils.checks import *
 
-class wide:
+class Wide:
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(pass_context=True)
-    async def wide(self, ctx, *, msg):
-        """I don't know... It makes the text wide.
+    @commands.command()
+    async def wide(self, ctx, *, msg=""):
+        """
+        I don't know... It makes the text wide.
 
         Usage:
-        >wide <message id>
+        [p]wide <message id>
             ＭＥＳＳＡＧＥ ＣＯＮＴＥＮＴＳ
-        >wide <a string that you wish to be wide>
+        [p]wide <a string that you wish to be wide>
             <ＮＯＷ ＹＯＵＲ ＳＴＲＩＮＧ ＩＳ ＷＩＤＥ>
-        >wide
-            Displays this.
+        [p]wide
+            Makes last message in channel wide
         """
 
         if msg:
             if msg.isdigit():
-                async for message in self.bot.logs_from(ctx.message.channel, 100):
-                    if message.id == msg:
+                async for message in ctx.channel.history(limit=100):
+                    if str(message.id) == msg:
                         msg = message.content
                         break
         else:
             switch = False
-            async for message in self.bot.logs_from(ctx.message.channel, 2):
+            async for message in ctx.channel.history(limit=2):
                 if switch:
                     msg = message.content
                 else:
@@ -36,32 +35,58 @@ class wide:
         result = ""
 
         substitution_dict = {
-            "a": "Ａ",
-            "b": "Ｂ",
-            "c": "Ｃ",
-            "d": "Ｄ",
-            "e": "Ｅ",
-            "f": "Ｆ",
-            "g": "Ｇ",
-            "h": "Ｈ",
-            "i": "Ｉ",
-            "j": "Ｊ",
-            "k": "Ｋ",
-            "l": "Ｌ",
-            "m": "Ｍ",
-            "n": "Ｎ",
-            "o": "Ｏ",
-            "p": "Ｐ",
-            "q": "Ｑ",
-            "r": "Ｒ",
-            "s": "Ｓ",
-            "t": "Ｔ",
-            "u": "Ｕ",
-            "v": "Ｖ",
-            "w": "Ｗ",
-            "x": "Ｘ",
-            "y": "Ｙ",
-            "z": "Ｚ",
+            "A": "Ａ",
+            "B": "Ｂ",
+            "C": "Ｃ",
+            "D": "Ｄ",
+            "E": "Ｅ",
+            "F": "Ｆ",
+            "G": "Ｇ",
+            "H": "Ｈ",
+            "I": "Ｉ",
+            "J": "Ｊ",
+            "K": "Ｋ",
+            "L": "Ｌ",
+            "M": "Ｍ",
+            "N": "Ｎ",
+            "O": "Ｏ",
+            "P": "Ｐ",
+            "Q": "Ｑ",
+            "R": "Ｒ",
+            "S": "Ｓ",
+            "T": "Ｔ",
+            "U": "Ｕ",
+            "V": "Ｖ",
+            "W": "Ｗ",
+            "X": "Ｘ",
+            "Y": "Ｙ",
+            "Z": "Ｚ",
+            "a": "ａ",
+            "b": "ｂ",
+            "c": "ｃ",
+            "d": "ｄ",
+            "e": "ｅ",
+            "f": "ｆ",
+            "g": "ｇ",
+            "h": "ｈ",
+            "i": "ｉ",
+            "j": "ｊ",
+            "k": "ｋ",
+            "l": "ｌ",
+            "m": "ｍ",
+            "n": "ｎ",
+            "o": "ｏ",
+            "p": "ｐ",
+            "q": "ｑ",
+            "r": "ｒ",
+            "s": "ｓ",
+            "t": "ｔ",
+            "u": "ｕ",
+            "v": "ｖ",
+            "w": "ｗ",
+            "x": "ｘ",
+            "y": "ｙ",
+            "z": "ｚ",
             "1": "１",
             "2": "２",
             "3": "３",
@@ -73,16 +98,17 @@ class wide:
             "9": "９",
             "0": "０",
             "!": "！",
-            "?": "？"
+            "?": "？",
+            " ": "　"
             }
 
-        result = msg.lower().translate(str.maketrans(substitution_dict))
+        result = msg.translate(str.maketrans(substitution_dict))
 
-        await self.bot.delete_message(ctx.message)
-        await self.bot.send_message(ctx.message.channel, result)
+        await ctx.message.delete()
+        await ctx.send(result)
 
 def setup(bot):
-    bot.add_cog(wide(bot))
+    bot.add_cog(Wide(bot))
 
 
 #Lyric you halp me so much
