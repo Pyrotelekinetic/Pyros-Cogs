@@ -14,11 +14,12 @@ class Wide:
         [p]wide <a string that you wish to be wide>
             ＮＯＷ　ＹＯＵＲ　ＳＴＲＩＮＧ　ＩＳ　ＷＩＤＥ
             
+        [p]wide
+            Makes last message in channel wide
+            
         [p]wide <message id of message that you wish to be wide>
             ＭＥＳＳＡＧＥ　ＣＯＮＴＥＮＴＳ　ＯＮＬＹ　ＷＩＤＥ
             
-        [p]wide
-            Makes last message in channel wide
         """
 
         if msg:
@@ -111,7 +112,7 @@ class Wide:
         await ctx.send(result)
 
 def setup(bot):
-    bot.add_cog(Wide(bot))
+	bot.add_cog(Wide(bot))
 
 
 #Lyric you halp me so much
