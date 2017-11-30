@@ -10,10 +10,13 @@ class Wide:
         I don't know... It makes the text wide.
 
         Usage:
-        [p]wide <message id>
-            ＭＥＳＳＡＧＥ ＣＯＮＴＥＮＴＳ
+        
         [p]wide <a string that you wish to be wide>
-            <ＮＯＷ ＹＯＵＲ ＳＴＲＩＮＧ ＩＳ ＷＩＤＥ>
+            ＮＯＷ　ＹＯＵＲ　ＳＴＲＩＮＧ　ＩＳ　ＷＩＤＥ
+            
+        [p]wide <message id of message that you wish to be wide>
+            ＭＥＳＳＡＧＥ　ＣＯＮＴＥＮＴＳ　ＯＮＬＹ　ＷＩＤＥ
+            
         [p]wide
             Makes last message in channel wide
         """
