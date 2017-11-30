@@ -7,19 +7,20 @@ class Wide:
     @commands.command()
     async def wide(self, ctx, *, msg=""):
         """
-        I don't know... It makes the text wide.
+        I don't know... It makes the text wide or fullwidth or something like that.
 
         Usage:
         
         [p]wide <a string that you wish to be wide>
             ＮＯＷ　ＹＯＵＲ　ＳＴＲＩＮＧ　ＩＳ　ＷＩＤＥ
-            
+	    
         [p]wide
-            Makes last message in channel wide
-            
+            ＬＡＳＴ ＭＥＳＳＡＧＥ: ＷＩＤＥ ＥＤＩＴＩＯＮ
+	    
         [p]wide <message id of message that you wish to be wide>
             ＭＥＳＳＡＧＥ　ＣＯＮＴＥＮＴＳ　ＯＮＬＹ　ＷＩＤＥ
             
+	    	*If you don't understand how something works, just try the thing and figure it out.
         """
 
         if msg:
