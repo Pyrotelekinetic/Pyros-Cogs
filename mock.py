@@ -10,14 +10,20 @@ class mock:
 
 	@commands.command(pass_context=True)
 	async def mock(self, ctx, *, msg=""):
-		"""Use >mock to randomized capitalization on a message or string.
+		
+		"""
+		Use [p]mock to randomized capitalization on a message or string.
 		Better random comming soon™
+		
 		Usage:
-		>mock a string
+		
+		[p]mock a string
 			A sTRiNg
-		>mock
+			
+		[p]mock
 			laSt SeNT MeSsaGE
-		>mock (message id)
+			
+		[p]mock <message id>
 			THaT mEsSAgE
 		"""
 		if msg:
@@ -34,6 +40,9 @@ class mock:
 				else:
 					switch = True
 					
+					
+					
+			#randomize						
 		fakeresult = ""
 		for char in msg:
 			value = random.choice([True, False])
@@ -42,29 +51,34 @@ class mock:
 			if value == False:
 				fakeresult += char.lower()
 				
+				
+				
+			#ensure random isn't too random™			
 		caps = ""
 		for char in fakeresult:
 			if char.isupper():
-				caps += "X"
+				caps += "1"
 			else:
-				caps += "x"
+				caps += "0"
 				
-		while "xxx" in caps or "XXX" in caps:
-			caps = caps.replace("XXX", "XxX").replace("xxx", "xXx")
+		while "000" in caps or "111" in caps:
+			caps = caps.replace("111", "101").replace("000", "010")
 			
 		result = ""
 		for idx, char in enumerate(fakeresult):
-			if caps[idx] == "x":
+			if caps[idx] == "0":
 				result += char.lower()
 			else:
 				result += char.upper()
-		await self.bot.delete_message(ctx.message)
-		await self.bot.send_message(ctx.message.channel, result)
+				
+				
+				
+		await ctx.message.delete()
+        	await ctx.send(result)
+		
+		
 		
 def setup(bot):
 	bot.add_cog(mock(bot))
-
-
-
 	
 # Thanks for the help Lyric.
