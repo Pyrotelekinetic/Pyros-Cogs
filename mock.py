@@ -4,7 +4,6 @@ from discord.ext import commands
 from cogs.utils.checks import *
 
 class mock:
-
 	def __init__(self, bot):
 		self.bot = bot
 
@@ -28,13 +27,13 @@ class mock:
 		"""
 		if msg:
 			if msg.isdigit():
-				async for message in self.bot.logs_from(ctx.message.channel, 100):
+				async for message in ctx.channel.history(limit=100):
 					if message.id == msg:
 						msg = message.content
 						break
 		else:
 			switch = False
-			async for message in self.bot.logs_from(ctx.message.channel, 2):
+			async for message in message in ctx.channel.history(limit=2):
 				if switch:
 					msg = message.content
 				else:
