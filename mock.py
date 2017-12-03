@@ -74,7 +74,7 @@ class mock:
 				
 				
 		await ctx.message.delete()
-        	await ctx.send(result)
+		await ctx.send(result)
 		
 		
 		
