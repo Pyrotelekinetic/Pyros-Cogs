@@ -81,4 +81,4 @@ class mock:
 def setup(bot):
 	bot.add_cog(mock(bot))
 	
-# Thanks for the help Lyric.
+# Thanks for the help Lyric. 
