@@ -25,22 +25,9 @@ class mock:
 		[p]mock <message id>
 			THaT mEsSAgE
 		"""
-		if msg:
-			if msg.isdigit():
-				async for message in ctx.channel.history(limit=100):
-					if message.id == msg:
-						msg = message.content
-						break
-		else:
-			switch = False
-			async for message in message in ctx.channel.history(limit=2):
-				if switch:
-					msg = message.content
-				else:
-					switch = True
-					
-					
-					
+		
+		
+		
 			#randomize						
 		fakeresult = ""
 		for char in msg:
