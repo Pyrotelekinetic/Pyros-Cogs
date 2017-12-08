@@ -25,19 +25,14 @@ class mock:
 		[p]mock <message id>
 			THaT mEsSAgE
 		"""
-		if msg:
-			if msg.isdigit():
-				async for message in ctx.channel.history(limit=100):
-					if str(message.id) == msg:
-						msg = message.content
-						break
-		else:
-			switch = False
-			async for message in ctx.channel.history(limit=2):
-				if switch:
+		if msg.isdigit():
+			async for message in ctx.channel.history(limit=100):
+				if msg === str(message.id):
 					msg = message.content
-				else:
-					switch = True
+		elif msg = "":
+			async for message in ctx.channel.history(limit=2):
+				msg == message.content
+
 					
 					
 					
