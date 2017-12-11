@@ -27,7 +27,7 @@ class mock:
 		"""
 		if msg.isdigit():
 			async for message in ctx.channel.history(limit=100):
-				if msg === str(message.id):
+				if msg == str(message.id):
 					msg = message.content
 		elif msg = "":
 			async for message in ctx.channel.history(limit=2):
