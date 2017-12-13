@@ -9,34 +9,33 @@ class mock:
 
 	@commands.command(pass_context=True)
 	async def mock(self, ctx, *, msg=""):
-		
+
 		"""
 		Use [p]mock to randomized capitalization on a message or string.
 		Better random comming soon™
-		
+
 		Usage:
-		
+
 		[p]mock a string
 			A sTRiNg
-			
+
 		[p]mock
 			laSt SeNT MeSsaGE
-			
+
 		[p]mock <message id>
 			THaT mEsSAgE
 		"""
+
+			#check for string or message id
 		if msg.isdigit():
 			async for message in ctx.channel.history(limit=100):
 				if msg == str(message.id):
 					msg = message.content
-		elif msg = "":
+		elif msg == "":
 			async for message in ctx.channel.history(limit=2):
-				msg == message.content
+				msg = message.content
 
-					
-					
-					
-			#randomize						
+			#randomize
 		fakeresult = ""
 		for char in msg:
 			value = random.choice([True, False])
@@ -44,35 +43,27 @@ class mock:
 				fakeresult += char.upper()
 			if value == False:
 				fakeresult += char.lower()
-				
-				
-				
-			#ensure random isn't too random™			
+
+			#ensure random isn't too random™
 		caps = ""
 		for char in fakeresult:
 			if char.isupper():
 				caps += "1"
 			else:
 				caps += "0"
-				
 		while "000" in caps or "111" in caps:
 			caps = caps.replace("111", "101").replace("000", "010")
-			
 		result = ""
 		for idx, char in enumerate(fakeresult):
 			if caps[idx] == "0":
 				result += char.lower()
 			else:
 				result += char.upper()
-				
-				
-				
+
 		await ctx.message.delete()
 		await ctx.send(result)
-		
-		
-		
+
 def setup(bot):
 	bot.add_cog(mock(bot))
-	
-# Thanks for the help Lyric. 
+
+# Thanks for the help Lyric.
