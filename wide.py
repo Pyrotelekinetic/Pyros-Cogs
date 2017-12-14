@@ -29,7 +29,7 @@ class Wide:
 			async for message in ctx.channel.history(limit=2):
 				msg = message.content
 
-			wide_dict= {
+			substitution_dict= {
 			"A": "Ａ",
 			"B": "Ｂ",
 			"C": "Ｃ",
@@ -97,7 +97,7 @@ class Wide:
 			" ": "　"
 			}
 
-		result = msg.translate(str.maketrans(wide_dict))
+		result = msg.translate(str.maketrans(substitution_dict))
 
 		await ctx.message.delete()
 		await ctx.send(result)
