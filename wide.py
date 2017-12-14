@@ -8,38 +8,28 @@ class Wide:
 	async def wide(self, ctx, *, msg=""):
 		"""
 		I don't know... It makes the text wide or fullwidth or something like that.
-
 		Usage:
-		
+
 		[p]wide <a string that you wish to be wide>
 			ＮＯＷ　ＹＯＵＲ　ＳＴＲＩＮＧ　ＩＳ　ＷＩＤＥ
-		
+
 		[p]wide
 			ＬＡＳＴ ＭＥＳＳＡＧＥ: ＷＩＤＥ ＥＤＩＴＩＯＮ
-		
+
 		[p]wide <message id of message that you wish to be wide>
 			ＭＥＳＳＡＧＥ　ＣＯＮＴＥＮＴＳ　ＯＮＬＹ　ＷＩＤＥ
-			
-			*If you don't understand how something works, just try the thing and figure it out.
 		"""
 
-		if msg:
-			if msg.isdigit():
-				async for message in ctx.channel.history(limit=100):
-					if str(message.id) == msg:
-						msg = message.content
-						break
-		else:
-			switch = False
-			async for message in ctx.channel.history(limit=2):
-				if switch:
+			#check for string or message id
+		if msg.isdigit():
+			async for message in ctx.channel.history(limit=100):
+				if msg == str(message.id):
 					msg = message.content
-				else:
-					switch = True
+		elif msg == "":
+			async for message in ctx.channel.history(limit=2):
+				msg = message.content
 
-
-
-		substitution_dict = {
+			widedict= {
 			"A": "Ａ",
 			"B": "Ｂ",
 			"C": "Ｃ",
@@ -106,14 +96,13 @@ class Wide:
 			"?": "？",
 			" ": "　"
 			}
-	
-		result = msg.translate(str.maketrans(substitution_dict))
+
+		result = msg.translate(str.maketrans(widedict))
 
 		await ctx.message.delete()
 		await ctx.send(result)
 
 def setup(bot):
 	bot.add_cog(Wide(bot))
-
 
 #Lyric you halp me so much
