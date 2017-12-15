@@ -1,0 +1,7 @@
+# Just for the tabs
+
+root = true
+
+indent_style = tabs
+
+indent_size = 4
