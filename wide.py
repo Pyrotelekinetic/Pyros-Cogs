@@ -101,7 +101,7 @@ class Wide:
 
 		await ctx.message.delete()
 
-		if result = "":
+		if result == "":
 			await ctx.send(self.bot.prefix + "It looks like you tried to send an emtpy message. This can be caused by trying to mock an embeded message.")
 		else:
 			await ctx.send(result)
