@@ -61,7 +61,11 @@ class mock:
 				result += char.upper()
 
 		await ctx.message.delete()
-		await ctx.send(result)
+
+		if result == "":
+			await ctx.send(self.bot.bot_prefix + "It appears as if you have attempted to dispatch a blank message. This is invalid. It is possible you have proposed a mock of an embeded message.")
+		else:
+			await ctx.send(result)
 
 def setup(bot):
 	bot.add_cog(mock(bot))
