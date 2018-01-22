@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/github/license/Pyrotelekinetic/Pyros-Cogs.svg)](https://github.com/Pyrotelekinetic/Pyros-Cogs/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/Pyrotelekinetic/Pyros-Cogs.svg?colorB=263f66)](https://github.com/Pyrotelekinetic/Pyros-Cogs/blob/master/LICENSE)
 # Selfbot Cogs From Pyro
 Official repo for Pyrotelekinetic's many super-useful custom cogs for [Appu's Selfbot](https://github.com/appu1232/Discord-Selfbot). I recomend installing via LyricLy's [ASCII](https://github.com/LyricLy/ASCII)\(Appu Selfbot Cog Importable Index) Repo. Use `>cog help` for instructions on installing cogs with ASCII.
 
