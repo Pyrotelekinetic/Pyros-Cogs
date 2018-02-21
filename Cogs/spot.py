@@ -8,32 +8,40 @@ class spot:
 		self.bot = bot
 
 	@commands.command()
-	async def spot(self, ctx, *, msg=""):
+	async def spot(self, ctx, *, msg = ""):
 
 		"""
-		testing...
+		Under Heavy Development
+		Search for a track on Spotify and return name and url to 30 second preview
 		usage:
-		stuff
-		stuff
+		[p]spot <search term>
 		"""
 
 			#authorize via client credentials flow
-		client_credentials_manager = SpotifyClientCredentials(client_id="", client_secret="")
-		sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+		client_credentials_manager = SpotifyClientCredentials(client_id = "", client_secret = "")
+		sp = spotipy.Spotify(client_credentials_manager = client_credentials_manager)
 
-		results = sp.search(q=msg, limit=1, offset=0, type="track", market=None)
-		
-		trackname = results['tracks']['items'][0]['name']
-		
-		trackpreview = results['tracks']['items'][0]['preview_url']
-		
-		if trackpreview == "null":
-			prettyresult = discord.Embed(title = "Search Results", description = trackname + "Preview Unavailable")
-		else:
-			prettyresult = discord.Embed(title = "Search Results", description = trackname + trackpreview)
-		
 		await ctx.message.delete()
-		await ctx.send(embed=prettyresult)
+		if msg == "":
+			await ctx.send("You must enter a phrase to search for!")
+		else:
+				#hit api with search query
+			results = sp.search(q = msg, limit = 1, offset = 0, type = "track", market = None)
+				#check if no tracks were found
+			if results["tracks"]["total"] == 0:
+				await ctx.send(embed = discord.Embed(title = "No Results!", description = 'No tracks matching "{}" were found'.format(msg)))
+				#grab the data data we want from api response
+			else:
+				trackname = results["tracks"]["items"][0]["name"]
+				trackpreview = results["tracks"]["items"][0]["preview_url"]
+				if trackpreview == None:
+					trackpreview = ""
+				albumcover = results["tracks"]["items"][0]["album"]["images"][2]["url"]
+				trackdata = str(trackname) + str(trackpreview)
+					#generate readable response embed
+				prettyresult = discord.Embed(title = "Search: " + str(msg), description = str(trackname) + str(trackpreview), thumbnail = albumcover)
+				await ctx.send(embed = prettyresult)
+			#await ctx.send(results)
+			#['tracks']['items']['albulm']['images'][3]['url']
 def setup(bot):
 	bot.add_cog(spot(bot))
-	
