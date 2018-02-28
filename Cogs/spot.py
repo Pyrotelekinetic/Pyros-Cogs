@@ -15,7 +15,7 @@ class spot:
 		Basic Spotify search
 		usage:
 		[p]search <search term> | <search type>
-		Better docs comming soon™
+		Better docs coming soon™
 		"""
 
 			#authorize spotipy api requests via client credentials flow
